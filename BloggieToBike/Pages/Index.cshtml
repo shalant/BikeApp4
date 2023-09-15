@@ -15,12 +15,53 @@
                 <p>Join the members sections to add your own routes for the low price of $5</p>
             </div>
         </div>
-        
+
         <br />
         <a href="/events" class="cta-button">Upcoming Events</a>
     </div>
 </section>
-@* 
+
+<div class="hero-bottom-wrapper">
+    <div class="cover">
+        <h2 class="mb-5 display-3">Popular Routes</h2>
+        @if (Model.NewBikeRoute != null && Model.NewBikeRoute.Any())
+        {
+            @foreach (var route in Model.NewBikeRoute)
+            {
+                @if (route.Featured == true)
+                {
+                    <div class="mb-5 bg-light box-shadow">
+                        @* <img src="@route.FeaturedImageUrl" alt="@route.Name" class="mb-2 d-block img-fluid" /> *@
+
+                        <div class="px-4 py-4">
+                            <h2 class="mb-2">@route.Name</h2>
+                            <p>
+                                Length: @route.Length
+                                <br />
+                                Direction: @route.Direction
+                            </p>
+                            <p class="mb-2">@route.ShortDescription</p>
+                            <a href="/NewBikeRoutes/Details?id=@route.Id" class="btn btn-dark">Read More</a>
+                            <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="@route.StravaLink"></div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+
+    <div class="cover">
+        <h2 class="mb-5 display-3">Events</h2>
+       
+    </div>
+</div>
+
+
+
+
+
+
+@*
 <section id="about" class="about-section">
     <div class="about-content">
         <h2>About Us</h2>
@@ -64,57 +105,8 @@
             </p>
         </div>
         <div class="col-12 col-lg-6">
-            <img src="https://images.pexels.com/photos/196655/pexels-photo-196655.jpeg" 
+            <img src="https://images.pexels.com/photos/196655/pexels-photo-196655.jpeg"
                 class="d-block mx-lag-auto img-fluid width=400px" />
         </div>
     </div>
 </div> *@
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-6">
-
-            <h2 class="mb-5 display-3">Popular</h2>
-
-            @* <div class="mb-5">
-                {
-                foreach (var item in Model.NewBikeRoute)
-                    {
-                        <a href="@item.Name">
-                            <span class="badge bg-dark">@tag.Name</span>
-
-                        </a>
-                    }
-                }
-            </div> *@
-
-            @if (Model.NewBikeRoute != null && Model.NewBikeRoute.Any())
-            {
-                @foreach (var route in Model.NewBikeRoute)
-                {
-                    @if (route.Featured == true)
-                    {
-                        <div class="mb-5 bg-light box-shadow">
-                            @* <img src="@route.FeaturedImageUrl" alt="@route.Name" class="mb-2 d-block img-fluid" /> *@
-
-                        <div class="px-4 py-4">
-                            <h2 class="mb-2">@route.Name</h2>
-                            <p>
-                                Length: @route.Length
-                                <br/>
-                                Direction: @route.Direction
-                            </p>
-                            <p class="mb-2">@route.ShortDescription</p>
-                            <a href="/NewBikeRoutes/Details?id=@route.Id" class="btn btn-dark">Read More</a>
-                            <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="@route.StravaLink"></div>
-                        </div>
-                    </div>
-                    }
-                }
-            }
-        </div>
-    </div>
-</div>
-
-
-
