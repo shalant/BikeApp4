@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Web.config" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CloudinaryDotNet" Version="1.22.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
@@ -20,6 +24,10 @@
 
   <ItemGroup>
     <Folder Include="Migrations\AuthDb\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Web.config" />
   </ItemGroup>
 
 </Project>

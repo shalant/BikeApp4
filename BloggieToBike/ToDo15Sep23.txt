@@ -1,5 +1,6 @@
-﻿Sooooo...
-
-A BikeRoute is a BlogPost
-
-How would I implement an event?
+﻿Hide secrets: connection strings
+Make mobile-first
+Display events on SPA
+Improve nav look
+Decide on one card style
+Footer

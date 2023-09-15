@@ -15,6 +15,7 @@
 launchSettings.json
 ToDoList.docx
 appsettings.Development.json
+Web.config
 
 # Build results
 artifacts/

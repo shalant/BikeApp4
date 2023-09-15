@@ -5,6 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+Environment.SetEnvironmentVariable("ASPNETCORE_CONNECTIONSTRING", builder.Configuration.GetSection("ConnectionStrings").GetSection("BloggieToBikeDbConnectionString").Value);
+Environment.SetEnvironmentVariable("ASPNETCORE_CONNECTIONSTRING", builder.Configuration.GetSection("ConnectionStrings").GetSection("BloggieToBikeAuthDbConnectionString").Value);
+
 // Add services to the container.
 //builder.Services.AddRazorPages();
 builder.Services.AddRazorPages(options =>
