@@ -1,0 +1,110 @@
+﻿@page
+@model BloggieToBike.Pages.NewBikeRoutes.DetailsModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+
+<div>
+    @*<h4>NewBikeRoute</h4>*@
+    <h4>
+        @Html.DisplayFor(model => model.NewBikeRoute.Name)
+    </h4>
+    <hr />
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card card-styles">
+                    <div class="card-body ">
+                        <h5 class="card-title">
+                            @Html.DisplayFor(model => model.NewBikeRoute.Name)
+                        </h5>
+                        <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="@Html.DisplayFor(model => model.NewBikeRoute.StravaLink)"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 detail-column">
+                <br />
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.NewBikeRoute.Name)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.NewBikeRoute.Name)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.NewBikeRoute.Length)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.NewBikeRoute.Length)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.NewBikeRoute.Elevation)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.NewBikeRoute.Elevation)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.NewBikeRoute.Direction)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.NewBikeRoute.Direction)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.NewBikeRoute.Content)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.NewBikeRoute.Content)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.NewBikeRoute.ShortDescription)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.NewBikeRoute.ShortDescription)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.NewBikeRoute.FeaturedImageUrl)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.NewBikeRoute.FeaturedImageUrl)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.NewBikeRoute.StravaLink)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.NewBikeRoute.StravaLink)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.NewBikeRoute.PublishedDate)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.NewBikeRoute.PublishedDate)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.NewBikeRoute.Author)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.NewBikeRoute.Author)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+        <a asp-page="/Admin/Edit" asp-route-id="@Model.NewBikeRoute?.Id">
+            <button class="btn btn-primary">Edit</button>
+            </a>
+    }
+    <a asp-page="./Index">Back to List</a>
+</div>

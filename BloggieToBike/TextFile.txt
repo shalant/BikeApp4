@@ -1,0 +1,5 @@
+﻿Sooooo...
+
+A BikeRoute is a BlogPost
+
+How would I implement an event?

@@ -1,0 +1,105 @@
+﻿@page
+@model BloggieToBike.Pages.NewBikeRoutes.EditModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Edit Bike Route</h4>
+<hr />
+@if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+    <div class="row">
+        <div class="col-6">
+            <div class="card card-styles">
+                <div class="card-body ">
+                    <h5 class="card-title">
+                        @Html.DisplayFor(model => model.NewBikeRoute.Name)
+                    </h5>
+                    <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="@Html.DisplayFor(model => model.NewBikeRoute.StravaLink)"></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-6 detail-column">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="NewBikeRoute.Id" />
+                <div class="form-group">
+                    <label asp-for="NewBikeRoute.Name" class="control-label"></label>
+                    <input asp-for="NewBikeRoute.Name" class="form-control" />
+                    <span asp-validation-for="NewBikeRoute.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NewBikeRoute.Length" class="control-label"></label>
+                    <input asp-for="NewBikeRoute.Length" class="form-control" />
+                    <span asp-validation-for="NewBikeRoute.Length" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NewBikeRoute.Elevation" class="control-label"></label>
+                    <input asp-for="NewBikeRoute.Elevation" class="form-control" />
+                    <span asp-validation-for="NewBikeRoute.Elevation" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NewBikeRoute.Direction" class="control-label"></label>
+                    <input asp-for="NewBikeRoute.Direction" class="form-control" />
+                    <span asp-validation-for="NewBikeRoute.Direction" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NewBikeRoute.Content" class="control-label"></label>
+                    <input asp-for="NewBikeRoute.Content" class="form-control" />
+                    <span asp-validation-for="NewBikeRoute.Content" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NewBikeRoute.ShortDescription" class="control-label"></label>
+                    <input asp-for="NewBikeRoute.ShortDescription" class="form-control" />
+                    <span asp-validation-for="NewBikeRoute.ShortDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NewBikeRoute.FeaturedImageUrl" class="control-label"></label>
+                    <input asp-for="NewBikeRoute.FeaturedImageUrl" class="form-control" />
+                    <span asp-validation-for="NewBikeRoute.FeaturedImageUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NewBikeRoute.StravaLink" class="control-label"></label>
+                    <input asp-for="NewBikeRoute.StravaLink" class="form-control" />
+                    <span asp-validation-for="NewBikeRoute.StravaLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NewBikeRoute.PublishedDate" class="control-label"></label>
+                    <input asp-for="NewBikeRoute.PublishedDate" class="form-control" />
+                    <span asp-validation-for="NewBikeRoute.PublishedDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NewBikeRoute.Author" class="control-label"></label>
+                    <input asp-for="NewBikeRoute.Author" class="form-control" />
+                    <span asp-validation-for="NewBikeRoute.Author" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label type="checkbox" asp-for="NewBikeRoute.Featured" class="control-label"></label>
+                    <input type="checkbox" asp-for="NewBikeRoute.Featured" class="form-control" />
+                    <span asp-validation-for="NewBikeRoute.Featured" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+    <h2>Only members can edit a route</h2>
+}
+<div>
+    @*<a asp-page="/newbikeroutes">Back to List</a>*@
+    <a href="/NewBikeRoutes">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

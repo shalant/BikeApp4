@@ -1,0 +1,43 @@
+﻿@page
+@model BloggieToBike.Web.Pages.Admin.Routes.ListModel
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2 mb-5">
+    <div class="container">
+        <h1>Bike Routes</h1>
+    </div>
+</div>
+
+<partial name="_Notification"></partial>
+
+@if (Model.BikeRoutes != null && Model.BikeRoutes.Any())
+{
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>View</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var bikeRoute in Model.BikeRoutes)
+                {
+                    <tr>
+                        <td>@bikeRoute.Id</td>
+                        <td>@bikeRoute.Name</td>
+                        <td><a href="/Admin/BikeRoutes/Edit/@bikeRoute.Id">View</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="container">
+        <p>No bike routes were found</p>
+    </div>
+}
