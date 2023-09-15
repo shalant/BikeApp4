@@ -14,6 +14,7 @@
 *.sln.docstates
 launchSettings.json
 ToDoList.docx
+appsettings.Development.json
 
 # Build results
 artifacts/
