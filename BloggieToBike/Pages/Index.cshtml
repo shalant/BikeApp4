@@ -52,7 +52,15 @@
 
     <div class="cover">
         <h2 class="mb-5 display-3">Events</h2>
-       
+        @if (Model.Events != null && Model.Events.Any())
+        {
+            foreach (var item in Model.Events)
+            {
+                <div>@item.Name</div>
+
+            }
+        }
+
     </div>
 </div>
 
