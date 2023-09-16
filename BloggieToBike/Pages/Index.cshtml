@@ -5,25 +5,25 @@
     ViewData["Title"] = "Home page";
 }
 
-
-<section id="home" class="hero">
-    <div class="col-sm-12 col-md-6">
-        <div class="hero-content">
-            <div class="hero-card">
-                <div class="card-body">
-                    <h1>Explore the Area on Two Wheels!</h1>
-                    <h4>Browse nice bike routes out of Oak Park in any direction, any length</h4>
-                    <p>Join the members sections to add your own routes for the low price of $5</p>
+<div class="container">
+    <div class="new-layout">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-card">
+                    <div class="card-body">
+                        <h1>Explore the Area on Two Wheels!</h1>
+                        <h4>Browse nice bike routes out of Oak Park in any direction, any length</h4>
+                        <p>Join the members sections to add your own routes for the low price of $5</p>
+                    </div>
                 </div>
+
+                <br />
+
+                <a href="/events" class="cta-button">Upcoming Events</a>
             </div>
-
-            <br />
-
-            <a href="/events" class="cta-button">Upcoming Events</a>
         </div>
-    </div>
-    <div class="col-sm-12 col-md-6">
-        <div class="hero-content">
+
+        <div class="decide">
             <div class="hero-card">
                 <div class="card-body">
                     <h2>Help me decide on a route</h2>
@@ -50,64 +50,160 @@
                     </form>
                 </div>
             </div>
-
-            <br />
-
         </div>
-    </div>
-</section>
-
-<div class="hero-bottom-wrapper">
-    <div class="cover">
-        <h2 class="mb-5 display-3">Popular Routes</h2>
-        @if (Model.NewBikeRoute != null && Model.NewBikeRoute.Any())
-        {
-            @foreach (var route in Model.NewBikeRoute)
+        <div class="featured-routes">
+            <h2 class="mb-5 display-3">Popular Routes</h2>
+            @if (Model.NewBikeRoute != null && Model.NewBikeRoute.Any())
             {
-                @if (route.Featured == true)
+                @foreach (var route in Model.NewBikeRoute)
                 {
-                    <div class="mb-5 bg-light box-shadow">
-                        @* <img src="@route.FeaturedImageUrl" alt="@route.Name" class="mb-2 d-block img-fluid" /> *@
+                    @if (route.Featured == true)
+                    {
+                        <div class="mb-5 bg-light box-shadow">
+                            @* <img src="@route.FeaturedImageUrl" alt="@route.Name" class="mb-2 d-block img-fluid" /> *@
 
-                        <div class="px-4 py-4">
-                            <h2 class="mb-2">@route.Name</h2>
-                            <p>
-                                Length: @route.Length
-                                <br />
-                                Direction: @route.Direction
-                            </p>
-                            <p class="mb-2">@route.ShortDescription</p>
-                            <a href="/NewBikeRoutes/Details?id=@route.Id" class="btn btn-dark">Read More</a>
-                            <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="@route.StravaLink"></div>
+                            <div class="px-4 py-4">
+                                <h2 class="mb-2">@route.Name</h2>
+                                <p>
+                                    Length: @route.Length
+                                    <br />
+                                    Direction: @route.Direction
+                                </p>
+                                <p class="mb-2">@route.ShortDescription</p>
+                                <a href="/NewBikeRoutes/Details?id=@route.Id" class="btn btn-dark">Read More</a>
+                                <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="@route.StravaLink"></div>
+                            </div>
                         </div>
-                    </div>
-                }
-            }
-        }
-    </div>
-
-    <div class="cover">
-        <h2 class="mb-5 display-3">Events</h2>
-        <div class="card event-column">
-            @if (Model.Events != null && Model.Events.Any())
-            {
-                foreach (var item in Model.Events)
-                {
-                    <div class="card-styles">
-                        <div class="card-body card-body_custom">
-                            <h5 class="card-title">@item.Name</h5>
-                            <h5 class="card-title">@item.EventDate</h5>
-                            <div class="strava-embed-placeholder card-image" data-embed-type="activity" data-embed-id="@item.NewBikeRoute.StravaLink"></div>
-                        </div>
-                    </div>
+                    }
                 }
             }
         </div>
+        <div class="events">
+            <h2 class="mb-5 display-3">Events</h2>
+            <div class="card event-column">
+                @if (Model.Events != null && Model.Events.Any())
+                {
+                    foreach (var item in Model.Events)
+                    {
+                        <div class="card-styles">
+                            <div class="card-body card-body_custom">
+                                <h5 class="card-title">@item.Name</h5>
+                                <h5 class="card-title">@item.EventDate</h5>
+                                <div class="strava-embed-placeholder card-image" data-embed-type="activity" data-embed-id="@item.NewBikeRoute.StravaLink"></div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
 
 
+
+@* 
+    <section id="home" class="hero">
+        <div class="col-sm-12 col-md-6">
+            <div class="hero-content">
+                <div class="hero-card">
+                    <div class="card-body">
+                        <h1>Explore the Area on Two Wheels!</h1>
+                        <h4>Browse nice bike routes out of Oak Park in any direction, any length</h4>
+                        <p>Join the members sections to add your own routes for the low price of $5</p>
+                    </div>
+                </div>
+
+                <br />
+
+                <a href="/events" class="cta-button">Upcoming Events</a>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <div class="hero-content">
+                <div class="hero-card">
+                    <div class="card-body">
+                        <h2>Help me decide on a route</h2>
+                        <form>
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">Distance</label>
+                                <input type="number" class="form-control" id="formGroupExampleInput" placeholder="This many miles">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Wind Direction?</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option value="" selected disabled>Which Way?</option>
+                                    <option>North</option>
+                                    <option>East</option>
+                                    <option>South</option>
+                                    <option>West</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="formControlRange">How difficult?</label>
+                                <input type="range" class="form-control-range" id="formControlRange">
+                            </div>
+                            <button class="btn btn-secondary" type="submit">Get me the perfect route!</button>
+                        </form>
+                    </div>
+                </div>
+
+                <br />
+
+            </div>
+        </div>
+    </section> *@
+
+    @*
+    <div class="hero-bottom-wrapper">
+        <div class="cover">
+            <h2 class="mb-5 display-3">Popular Routes</h2>
+            @if (Model.NewBikeRoute != null && Model.NewBikeRoute.Any())
+            {
+                @foreach (var route in Model.NewBikeRoute)
+                {
+                    @if (route.Featured == true)
+                    {
+                        <div class="mb-5 bg-light box-shadow">
+                            @* <img src="@route.FeaturedImageUrl" alt="@route.Name" class="mb-2 d-block img-fluid" />
+
+                            <div class="px-4 py-4">
+                                <h2 class="mb-2">@route.Name</h2>
+                                <p>
+                                    Length: @route.Length
+                                    <br />
+                                    Direction: @route.Direction
+                                </p>
+                                <p class="mb-2">@route.ShortDescription</p>
+                                <a href="/NewBikeRoutes/Details?id=@route.Id" class="btn btn-dark">Read More</a>
+                                <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="@route.StravaLink"></div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div@* > *@
+
+        @* <div class="cover">
+            <h2 class="mb-5 display-3">Events</h2>
+            <div class="card event-column">
+                @if (Model.Events != null && Model.Events.Any())
+                {
+                    foreach (var item in Model.Events)
+                    {
+                        <div class="card-styles">
+                            <div class="card-body card-body_custom">
+                                <h5 class="card-title">@item.Name</h5>
+                                <h5 class="card-title">@item.EventDate</h5>
+                                <div class="strava-embed-placeholder card-image" data-embed-type="activity" data-embed-id="@item.NewBikeRoute.StravaLink"></div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+        </div> *@
     </div>
 </div>
-
 
 
 

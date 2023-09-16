@@ -11,31 +11,6 @@ html {
     min-height: 100%;
 }
 
-
-@media (max-width: 660px) {
-    .new-layout {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .hero {
-
-    }
-
-    .decide {
-
-    }
-
-    .featured-routes {
-
-    }
-
-    .events {
-
-    }
-}
-
-
 @media (min-width: 768px) {
     html {
         font-size: 16px;
