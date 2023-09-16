@@ -20,7 +20,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<BloggieToBikeDbContext>(options =>
     options.UseSqlServer(
-        builder.Configuration.GetConnectionString("BloggieToBikeDbConnectionString")));
+        builder.Configuration.GetConnectionString("BloggieToBikeDbConnectionString")
+        //builder.Configuration.EnableRetryOnFailure()
+        ));
 
 builder.Services.AddDbContext<AuthDbContext>(options =>
     options.UseSqlServer(

@@ -7,17 +7,53 @@
 
 
 <section id="home" class="hero">
-    <div class="hero-content">
-        <div class="hero-card">
-            <div class="card-body">
-                <h1>Explore the Area on Two Wheels!</h1>
-                <h4>Browse nice bike routes out of Oak Park in any direction, any length</h4>
-                <p>Join the members sections to add your own routes for the low price of $5</p>
+    <div class="col-sm-12 col-md-6">
+        <div class="hero-content">
+            <div class="hero-card">
+                <div class="card-body">
+                    <h1>Explore the Area on Two Wheels!</h1>
+                    <h4>Browse nice bike routes out of Oak Park in any direction, any length</h4>
+                    <p>Join the members sections to add your own routes for the low price of $5</p>
+                </div>
             </div>
-        </div>
 
-        <br />
-        <a href="/events" class="cta-button">Upcoming Events</a>
+            <br />
+
+            <a href="/events" class="cta-button">Upcoming Events</a>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <div class="hero-content">
+            <div class="hero-card">
+                <div class="card-body">
+                    <h2>Help me decide on a route</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Distance</label>
+                            <input type="number" class="form-control" id="formGroupExampleInput" placeholder="This many miles">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Wind Direction?</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option value="" selected disabled>Which Way?</option>
+                                <option>North</option>
+                                <option>East</option>
+                                <option>South</option>
+                                <option>West</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="formControlRange">How difficult?</label>
+                            <input type="range" class="form-control-range" id="formControlRange">
+                        </div>
+                        <button class="btn btn-secondary" type="submit">Get me the perfect route!</button>
+                    </form>
+                </div>
+            </div>
+
+            <br />
+
+        </div>
     </div>
 </section>
 
@@ -52,14 +88,22 @@
 
     <div class="cover">
         <h2 class="mb-5 display-3">Events</h2>
-        @if (Model.Events != null && Model.Events.Any())
-        {
-            foreach (var item in Model.Events)
+        <div class="card event-column">
+            @if (Model.Events != null && Model.Events.Any())
             {
-                <div>@item.Name</div>
-
+                foreach (var item in Model.Events)
+                {
+                    <div class="card-styles">
+                        <div class="card-body card-body_custom">
+                            <h5 class="card-title">@item.Name</h5>
+                            <h5 class="card-title">@item.EventDate</h5>
+                            <div class="strava-embed-placeholder card-image" data-embed-type="activity" data-embed-id="@item.NewBikeRoute.StravaLink"></div>
+                        </div>
+                    </div>
+                }
             }
-        }
+        </div>
+
 
     </div>
 </div>
