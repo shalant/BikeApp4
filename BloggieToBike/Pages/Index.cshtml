@@ -9,7 +9,7 @@
     <div class="hero">
         @* HERO SECTION *@
         <div class="hero-content">
-            <div class="hero-card">
+            <div class="hero-card custom-card">
                 <div class="card-body">
                     <h1>Explore the Area on Two Wheels!</h1>
                     <h4>Browse nice bike routes out of Oak Park in any direction, any length</h4>
@@ -21,7 +21,7 @@
 
             @* DECIDER SECTION *@
 
-            <div class="hero-card decide">
+            <div class="custom-card decide">
                 <div class="card-body">
                     <h2>Help me decide on a route</h2>
                     <form>
@@ -47,7 +47,9 @@
                         <br />
                     </form>
                 </div>
+                <br />
             </div>
+            <br />
         </div>
     </div>
 
@@ -58,15 +60,15 @@
     
     <div class="hero reverse-hero">
         @* ROUTES SECTION *@
-        <div class="featured-routes">
-            <h2 class="mb-5 display-3">Popular Routes</h2>
+        <div class="featured-routes hero-content">
+            <h2 class="mb-4 display-3 featured-routes__header">Popular Routes</h2>
             @if (Model.NewBikeRoute != null && Model.NewBikeRoute.Any())
             {
                 @foreach (var route in Model.NewBikeRoute)
                 {
                     @if (route.Featured == true)
                     {
-                        <div class="hero-card">
+                        <div class="custom-card">
                             <div class="card-body">
                                 <h2>@route.Name</h2>
                                 <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="@route.StravaLink"></div>
@@ -84,13 +86,13 @@
     </div>
 
     <div class="hero">
-        <div class="events">
+        <div class="events hero-content">
             <h1>Events</h1>
             @if (Model.Events != null && Model.Events.Any())
             {
                 @foreach (var item in Model.Events)
                 {
-                    <div class="hero-card">
+                    <div class="custom-card">
                         <div class="card-body">
                             <h2>@item.Name</h2>
                             <h3>@item.EventDate</h3>
