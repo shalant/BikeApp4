@@ -25,13 +25,17 @@
                 <div class="card-body">
                     <h2>Help me decide on a route</h2>
                     <form>
+                        Search by distance: <input type="number" asp-for="lengthInt" />
+                        <input type="submit" value="Filter" />
+
                         <div class="form-group">
                             <label for="formGroupExampleInput">Distance</label>
                             <input type="number" class="form-control" id="formGroupExampleInput" placeholder="This many miles">
                         </div>
+                        <br />
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Wind Direction?</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select class="form-control" id="exampleFormControlSelect1" style="appearance:menulist;">
                                 <option value="" selected disabled>Which Way?</option>
                                 <option>North</option>
                                 <option>East</option>
@@ -39,6 +43,7 @@
                                 <option>West</option>
                             </select>
                         </div>
+                        <br />
                         <div class="form-group">
                             <label for="formControlRange">How difficult?</label>
                             <input type="range" class="form-control-range" id="formControlRange">

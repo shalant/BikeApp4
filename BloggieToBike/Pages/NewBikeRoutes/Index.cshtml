@@ -24,6 +24,15 @@
             <h1>Admin Panel</h1>
         }
     </div>
+    <form>
+        <p>
+            <select asp-for="RouteDirection" asp-items="Model.Directions">
+                <option value="">All</option>
+            </select>
+            Search by title: <input type="text" asp-for="SearchString" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
     <div class="table-styles">
     <table class="table">
         <thead>
@@ -72,7 +81,26 @@
     </table>
     </div>
     
-    <div class="container list-container">
+    <div class="hero reverse-hero">
+        @* ROUTES SECTION *@
+        <div class="displayed-routes hero-content">
+            @* <h2 class="mb-4 display-3 featured-routes__header">Popular Routes</h2> *@
+            @if (Model.NewBikeRoute != null && Model.NewBikeRoute.Any())
+            {
+                @foreach (var route in Model.NewBikeRoute)
+                {
+                        <div class="custom-card">
+                            <div class="card-body">
+                                <h2>@route.Name</h2>
+                                <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="@route.StravaLink"></div>
+                            </div>
+                        </div>
+                }
+            }
+        </div>
+    </div>
+
+    @* <div class="container list-container">
         <div class="row align-items-start">
             <div class="col-8">
                 <div class="card ">
@@ -91,5 +119,5 @@
 
             </div>
         </div>
-    </div>
+    </div> *@
 </div>

@@ -4,6 +4,7 @@ using BloggieToBike.Web.Models.Domain;
 using BloggieToBike.Web.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace BloggieToBike.Pages.IndexModel
@@ -17,17 +18,37 @@ namespace BloggieToBike.Pages.IndexModel
             _context = context;
         }
 
+        //DECIDER CODE
+        [BindProperty(SupportsGet = true)]
+        public int lengthInt { get; set; }
+
         public IList<NewBikeRoute> NewBikeRoute { get; set; } = default!;
         public IList<Event> Events { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
+            //OLD CODE THAT WORKS FINE
             if (_context.NewBikeRoute != null)
             {
                 NewBikeRoute = await _context.NewBikeRoute.ToListAsync();
                 Events = await _context.Events.ToListAsync();
             }
+
+            //var newBikeRouteByLength = from b in _context.NewBikeRoute
+            //                    select b;
+            //if (String.IsNullOrEmpty(lengthInt.ToString()))
+            //    {
+            //    newBikeRouteByLength = newBikeRoutes.Where(l => l.Length.Equals(lengthInt));
+            //}
+
+            //NewBikeRoute = await newBikeRoutes.ToListAsync();
+
         }
+
+
+        
+
+
     }
 }
 
